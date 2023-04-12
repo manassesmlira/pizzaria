@@ -1,14 +1,17 @@
 let modalQt = 1
+//fazer a quantidade do modal por padrão ser sempre 1, nunca 0.
 
 const c = (e)=>document.querySelector(e)
+//ao inves de digitar document. queroselector, digito apenas o ou para selecionar todos, digito apenas cs
 const cs = (e)=>document.querySelectorAll(e)
 
+//comando abaixo mapeia as pizzas listadas no servidor improvisado pizzajson
 pizzaJson.map((item, id)=>{
     let pizzaItem = c('.models .pizza-item').cloneNode(true)
-//comando acima seleciona o modelo de pizza no html
+//comando acima seleciona o modelo de pizza no html e faz uma copia
    
 pizzaItem.setAttribute('data-key', id)
-
+//na copia do modelo de pizza, adicionamos ao id, o data-key como uma class
 
 pizzaItem.querySelector('.pizza-item--name').innerHTML = item.name
 //agora dentro do clone de modelo de pizzahtml, selecionamos o nome da pizza, e inserimos no html o item nome lá do pizzajson.
@@ -17,6 +20,8 @@ pizzaItem.querySelector('.pizza-item--desc').innerHTML = item.description
 pizzaItem.querySelector('.pizza-item--price').innerHTML = `R$ ${item.price.toFixed(2)}`
 pizzaItem.querySelector('.pizza-item--img img').src = item.img
 
+//agora as pizzas com suas informações aparecem no site.
+
 pizzaItem.querySelector('a').addEventListener('click', (e)=>{
     e.preventDefault()
     //comando acima seleciona o aref(link) do modelo de pizza html. e cancela o efeito de click que fica atualizando a tela.
@@ -24,9 +29,9 @@ pizzaItem.querySelector('a').addEventListener('click', (e)=>{
     let key = e.target.closest('.pizza-item').getAttribute('data-key')
 //comando acima, target se refere a clicar no próprio elemento, o "e" da fun~ção, e o elemento é o 'a' de href, link.
 //o .closest é um comando que faz procurar o elemento mais próximo, que tenha "pizza-item", no html ele esta localizado acima.
-//entaõ inserimos em 'pizza-item' um getAtrtibute, inserimos o data-key, que se refere ao ID em pizzaJson.
+//entaõ inserimos em 'pizza-item' um getAtrtibute, inserimos o data-key, que se refere ao ID em pizzaJson. 
 
-modalQt = 1
+modalQt = 1 //para garantir que o modal, após fechado, sempre volta a 1 quando aberto novamente
 
 c('.pizzaInfo h1').innerHTML = pizzaJson[key].name
 //comando acima, seleciona o título da pizza no modal, e insere no html o título da pizza, puxando do 'servidor' pizzaJson, acessando key (link com atributo de data-key inserido) e substituindo por name. (nome da pizza)
@@ -36,7 +41,7 @@ c('.pizzaBig img').src = pizzaJson[key].img
 c('.pizzaInfo--desc').innerHTML = pizzaJson[key].description
 c('.pizzaInfo--actualPrice').innerHTML = `R$ ${pizzaJson[key].price.toFixed(2)}`
 
-
+//comando abaixo seve para remover a seleção do botão "tamanho da pizza"
 c('.pizzaInfo--size.selected').classList.remove('selected')
 
 
