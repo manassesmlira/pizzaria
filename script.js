@@ -5,6 +5,11 @@ const c = (e)=>document.querySelector(e)
 //ao inves de digitar document. queroselector, digito apenas o ou para selecionar todos, digito apenas cs
 const cs = (e)=>document.querySelectorAll(e)
 
+
+
+//----------------LISTAGEM DAS PIZZAS------------------------
+
+
 //comando abaixo mapeia as pizzas listadas no servidor improvisado pizzajson
 pizzaJson.map((item, id)=>{
     let pizzaItem = c('.models .pizza-item').cloneNode(true)
@@ -83,3 +88,13 @@ c('.pizza-area').append(pizzaItem);
 
 
 })
+
+
+//----------------EVENTOS DO MODAL------------------------
+
+function closeModal() {
+    c('.pizzaWindowArea').style.opacity = 0
+    setTimeout(()=>{
+        c('.pizzaWindowArea').style.display = none
+    })
+}
