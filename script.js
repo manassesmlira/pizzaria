@@ -1,3 +1,5 @@
+let modalQt = 1
+
 const c = (e)=>document.querySelector(e)
 const cs = (e)=>document.querySelectorAll(e)
 
@@ -24,6 +26,8 @@ pizzaItem.querySelector('a').addEventListener('click', (e)=>{
 //o .closest é um comando que faz procurar o elemento mais próximo, que tenha "pizza-item", no html ele esta localizado acima.
 //entaõ inserimos em 'pizza-item' um getAtrtibute, inserimos o data-key, que se refere ao ID em pizzaJson.
 
+modalQt = 1
+
 c('.pizzaInfo h1').innerHTML = pizzaJson[key].name
 //comando acima, seleciona o título da pizza no modal, e insere no html o título da pizza, puxando do 'servidor' pizzaJson, acessando key (link com atributo de data-key inserido) e substituindo por name. (nome da pizza)
 //isso faz com que sempre puxe as informações da pizza que foi clicada conforme o id no pizzaJson. o mesmo processo se repete abaixo para cada informação no modal.
@@ -33,12 +37,25 @@ c('.pizzaInfo--desc').innerHTML = pizzaJson[key].description
 c('.pizzaInfo--actualPrice').innerHTML = `R$ ${pizzaJson[key].price.toFixed(2)}`
 
 
+c('.pizzaInfo--size.selected').classList.remove('selected')
+
+
+
+//selecionamos as 3 classes de pizzainfosize de uma vez. e criamos a função forEach, significa para cada classe de pizzaInfo-size, porque são 3x a mesma classe para 3 tamanhos diferentes. então na função chamamos size (tamanho da pizza) e chamamos sizeIndex (correspondente ao ID da pizza em pizzajson para identificar o tamanho da pizza conforme informaçoes em pizzajson)
 cs('.pizzaInfo--size').forEach((size, sizeIndex)=>{
-
     
+    if (sizeIndex == 2) {
+        size.classList.add('selected')
+    }
 
-    size.querySelector('span').innerHTML = pizzaJson[key].sizes[sizeIndex]
+    //no html, nas linhas 3 onde temos as pizzaInfo--size, temos a tag span, que recebe o valor do tamanho da pizza. então selecionamos spam aqui, e no html inserimos: puxando de pizzajson pelo key(ID de pizzajson) e dentro do id vamos em sizes (tamanhos da pizza, que são pequena, media grande pra cada pizza),
+    size.querySelector('span').innerHTML = pizzaJson[key].sizes[sizeIndex] 
+    //
+    //pizzaJson[key].sizes[sizeIndex] acesso aos tamanhos de pizza
 })
+
+
+c('.pizzaInfo--qt').innerHTML = modalQt
 
 
     c('.pizzaWindowArea').style.opacity = 0
