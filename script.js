@@ -121,3 +121,11 @@ c('.pizzaInfo--qtmais').addEventListener('click', ()=>{
     modalQt++
     c('.pizzaInfo--qt').innerHTML = modalQt
 })
+
+
+cs('.pizzaInfo--size').forEach((size)=>{
+    size.addEventListener('click', (e)=>{
+        c('.pizzaInfo--size.selected').classList.remove('selected')
+        size.classList.add('selected')
+    })
+})
