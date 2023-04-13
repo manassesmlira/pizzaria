@@ -1,5 +1,9 @@
+let cart = []
+
 let modalQt = 1
 //fazer a quantidade do modal por padrão ser sempre 1, nunca 0.
+
+let modalKey = 0
 
 const c = (e)=>document.querySelector(e)
 //ao inves de digitar document. queroselector, digito apenas o ou para selecionar todos, digito apenas cs
@@ -35,6 +39,8 @@ pizzaItem.querySelector('a').addEventListener('click', (e)=>{
 //comando acima, target se refere a clicar no próprio elemento, o "e" da fun~ção, e o elemento é o 'a' de href, link.
 //o .closest é um comando que faz procurar o elemento mais próximo, que tenha "pizza-item", no html ele esta localizado acima.
 //entaõ inserimos em 'pizza-item' um getAtrtibute, inserimos o data-key, que se refere ao ID em pizzaJson. 
+
+modalKey = key
 
 modalQt = 1 //para garantir que o modal, após fechado, sempre volta a 1 quando aberto novamente
 
@@ -128,4 +134,17 @@ cs('.pizzaInfo--size').forEach((size)=>{
         c('.pizzaInfo--size.selected').classList.remove('selected')
         size.classList.add('selected')
     })
+})
+
+c('.pizzaInfo--addButton').addEventListener('click', ()=>{
+    let size = c('.pizzaInfo--size.selected').getAttribute('data-key')
+    
+cart.push({
+    id:pizzaJson[modalKey].id,
+    size,
+    qt:modalQt
+
+})
+
+closeModal()
 })
