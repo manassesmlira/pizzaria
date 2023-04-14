@@ -169,8 +169,15 @@ function updateCart() {
             let pizzaSizeName = cart[i].size
             
        
+            if(pizzaSizeName == 0) {
+                pizzaSizeName = "P";
+            } else if(pizzaSizeName == 1) {
+                pizzaSizeName = "M";
+            } else {
+                pizzaSizeName = "G";
+            }
             
-            
+            /*
             switch(pizzaSizeName = cart[i].size) {
                 case 0:
                     pizzaSizeName = "p";
@@ -182,7 +189,7 @@ function updateCart() {
                     pizzaSizeName = "g";
                     break;
             }
-            
+            */
 
 
             let pizzaName = `${pizzaItem.name} (${pizzaSizeName})`
