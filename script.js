@@ -170,8 +170,8 @@ function updateCart() {
             
        
             
-            /*
-            switch(cart[i].size) {
+            
+            switch(pizzaSizeName = cart[i].size) {
                 case 0:
                     pizzaSizeName = "p";
                     break;
@@ -180,8 +180,9 @@ function updateCart() {
                     break;
                 case 2:
                     pizzaSizeName = "g";
+                    break;
             }
-            */
+            
 
 
             let pizzaName = `${pizzaItem.name} (${pizzaSizeName})`
