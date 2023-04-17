@@ -146,6 +146,7 @@ if(key > -1) {
     cart[key].qt += modalQt
 } else {
     cart.push({
+        identifier,
         id:pizzaJson[modalKey].id,
         size,
         qt:modalQt
