@@ -101,18 +101,18 @@ c('.pizza-area').append(pizzaItem);
 
 //comando abaixo mapeia as pizzas listadas no servidor improvisado pizzajson
 esfihaJson.map((item, id)=>{
-    let esfihaItem = c('.models .pizza-item').cloneNode(true)
+    let esfihaItem = c('.models .esfiha-item').cloneNode(true)
 //comando acima seleciona o modelo de pizza no html e faz uma copia
    
 esfihaItem.setAttribute('data-key', id)
 //na copia do modelo de pizza, adicionamos ao id, o data-key como uma class
 
-esfihaItem.querySelector('.pizza-item--name').innerHTML = item.name
+esfihaItem.querySelector('.esfiha-item--name').innerHTML = item.name
 //agora dentro do clone de modelo de pizzahtml, selecionamos o nome da pizza, e inserimos no html o item nome lá do pizzajson.
 //faremos o mesmo nos codigos abaixo para todos os detalhes da pizza
-esfihaItem.querySelector('.pizza-item--desc').innerHTML = item.description
-esfihaItem.querySelector('.pizza-item--price').innerHTML = `R$ ${item.price.toFixed(2)}`
-esfihaItem.querySelector('.pizza-item--img img').src = item.img
+esfihaItem.querySelector('.esfiha-item--desc').innerHTML = item.description
+esfihaItem.querySelector('.esfiha-item--price').innerHTML = `R$ ${item.price.toFixed(2)}`
+esfihaItem.querySelector('.esfiha-item--img img').src = item.img
 
 //agora as pizzas com suas informações aparecem no site.
 
@@ -120,7 +120,7 @@ esfihaItem.querySelector('a').addEventListener('click', (e)=>{
     e.preventDefault()
     //comando acima seleciona o aref(link) do modelo de pizza html. e cancela o efeito de click que fica atualizando a tela.
 
-    let key = e.target.closest('.pizza-item').getAttribute('data-key')
+    let key = e.target.closest('.esfiha-item').getAttribute('data-key')
 //comando acima, target se refere a clicar no próprio elemento, o "e" da fun~ção, e o elemento é o 'a' de href, link.
 //o .closest é um comando que faz procurar o elemento mais próximo, que tenha "pizza-item", no html ele esta localizado acima.
 //entaõ inserimos em 'pizza-item' um getAtrtibute, inserimos o data-key, que se refere ao ID em pizzaJson. 
@@ -129,23 +129,23 @@ modalKey = key
 
 modalQt = 1 //para garantir que o modal, após fechado, sempre volta a 1 quando aberto novamente
 
-c('.pizzaInfo h1').innerHTML = esfihaJson[key].name
+c('.esfihaInfo h1').innerHTML = esfihaJson[key].name
 //comando acima, seleciona o título da pizza no modal, e insere no html o título da pizza, puxando do 'servidor' pizzaJson, acessando key (link com atributo de data-key inserido) e substituindo por name. (nome da pizza)
 //isso faz com que sempre puxe as informações da pizza que foi clicada conforme o id no pizzaJson. o mesmo processo se repete abaixo para cada informação no modal.
 
-c('.pizzaBig img').src = esfihaJson[key].img
-c('.pizzaInfo--desc').innerHTML = esfihaJson[key].description
-c('.pizzaInfo--actualPrice').innerHTML = `R$ ${esfihaJson[key].price.toFixed(2)}`
+c('.esfihaBig img').src = esfihaJson[key].img
+c('.esfihaInfo--desc').innerHTML = esfihaJson[key].description
+c('.esfihaInfo--actualPrice').innerHTML = `R$ ${esfihaJson[key].price.toFixed(2)}`
 
 //comando abaixo seve para remover a seleção do botão "tamanho da pizza"
-c('.pizzaInfo--size.selected').classList.remove('selected')
+c('.esfihaInfo--size.selected').classList.remove('selected')
 
 
 
-//selecionamos as 3 classes de pizzainfosize de uma vez. e criamos a função forEach, significa para cada classe de pizzaInfo-size, porque são 3x a mesma classe para 3 tamanhos diferentes. então na função chamamos size (tamanho da pizza) e chamamos sizeIndex (correspondente ao ID da pizza em pizzajson para identificar o tamanho da pizza conforme informaçoes em pizzajson)
-cs('.pizzaInfo--size').forEach((size, sizeIndex)=>{
+
+cs('.esfihaInfo--size').forEach((size, sizeIndex)=>{
     
-    if (sizeIndex == 2) {
+    if (sizeIndex == 0) {
         size.classList.add('selected')
     }
 
@@ -156,16 +156,16 @@ cs('.pizzaInfo--size').forEach((size, sizeIndex)=>{
 })
 
 
-c('.pizzaInfo--qt').innerHTML = modalQt
+c('.esfihaInfo--qt').innerHTML = modalQt
 
 
-    c('.pizzaWindowArea').style.opacity = 0
+    c('.esfihaWindowArea').style.opacity = 0
 //comando acima faz o modal inteiro ficar transparente, invisivel
     //comando abaixo acessa o css e muda o display do modal de none para flex, assim ele vai aparecer quando clicar
     
-    c('.pizzaWindowArea').style.display = 'flex'
+    c('.esfihaWindowArea').style.display = 'flex'
 setTimeout(()=>{
-    c('.pizzaWindowArea').style.opacity = 1
+    c('.esfihaWindowArea').style.opacity = 1
 
 }, 200) // função para fazer o modal esperar 200 milisegundos antes de ficar opacidade 1, que significa 100% criando assim uma animação ao abrir o modal
    
@@ -331,57 +331,50 @@ updateCart()
 closeModal()
 })
 
+let identifier2 = esfihaJson[modalKey].id+'@'+size
+let key2 = cart.findIndex((item)=>item.identifier2 == identifier2)
 
-function updateCart() {
-    if(cart.length > 0) {
-        c('aside').classList.add('show')
-        c('.cart').innerHTML = '';
-
-        for(let i in cart) {
-            let pizzaItem = pizzaJson.find((item)=>item.id == cart[i].id)
-            let cartItem = c('.models .cart--item').cloneNode(true)
-
-            let pizzaSizeName = cart[i].size
-            
-       
-            if(pizzaSizeName == 0) {
-                pizzaSizeName = "P";
-            } else if(pizzaSizeName == 1) {
-                pizzaSizeName = "M";
-            } else {
-                pizzaSizeName = "G";
-            }
-            
-            /*
-            switch(pizzaSizeName = cart[i].size) {
-                case 0:
-                    pizzaSizeName = "p";
-                    break;
-                case 1:
-                    pizzaSizeName = "m";
-                    break;
-                case 2:
-                    pizzaSizeName = "g";
-                    break;
-            }
-            */
-
-
-            let pizzaName = `${pizzaItem.name} (${pizzaSizeName})`
-
-            cartItem.querySelector('img').src = pizzaItem.img
-            cartItem.querySelector('.cart--item-nome').innerHTML = pizzaName
-            cartItem.querySelector('.cart--item--qt').innerHTML = cart[i].qt
-
-
-            c('.cart').append(cartItem)
-        }
-
-
-    } else {
-        c('aside').classList.remove('show')
-    }
+if(key2 > -1) {
+    cart[key2].qt += modalQt
+} else {
+    cart.push({
+        identifier2,
+        id:esfihaJson[modalKey].id,
+        size,
+        qt:modalQt
+    
+    })
 }
+updateCart()
+closeModal()
+
+
+let identifier3 = bebidaJson[modalKey].id+'@'+size
+let key3 = cart.findIndex((item)=>item.identifier3 == identifier3)
+
+if(key3 > -1) {
+    cart[key3].qt += modalQt
+} else {
+    cart.push({
+        identifier3,
+        id:bebidaJson[modalKey].id,
+        size,
+        qt:modalQt
+    
+    })
+}
+updateCart()
+closeModal()
+
+
+
+
+
+
+
+
+
+
 
 c('.menu-openner').addEventListener('click', ()=>{
     if(cart.length > 0) {
@@ -409,8 +402,10 @@ function updateCart() {
 
         for(let i in cart) {
             let pizzaItem = pizzaJson.find((item)=>item.id == cart[i].id)
+            let esfihaItem = esfihaJson.find((item)=>item.id == cart[i].id)
+            let bebidaItem = bebidaJson.find((item)=>item.id == cart[i].id)
 
-            subtotal += pizzaItem.price * cart[i].qt
+            subtotal += (pizzaItem.price + esfihaItem.price + bebidaItem.price) * cart[i].qt
 
 
             let cartItem = c('.models .cart--item').cloneNode(true)
@@ -423,6 +418,18 @@ function updateCart() {
                 } else {
                     pizzaSizeName = "G";
                 }
+
+
+                let esfihaSizeName = cart[i].size
+                if(esfihaSizeName == 0) {
+                    esfihaSizeName = "P";
+                } else if(esfihaSizeName == 1) {
+                    esfihaSizeName = "M";
+                } else {
+                    esfihaSizeName = "G";
+                }
+
+
 
 
 
