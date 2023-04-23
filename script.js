@@ -99,49 +99,28 @@ c('.pizza-area').append(pizzaItem);
 //----------------LISTAGEM DAS ESFIHAS------------------------
 
 
-//comando abaixo mapeia as pizzas listadas no servidor improvisado pizzajson
 esfihaJson.map((item, id)=>{
     let esfihaItem = c('.models .esfiha-item').cloneNode(true)
-//comando acima seleciona o modelo de pizza no html e faz uma copia
    
 esfihaItem.setAttribute('data-key', id)
-//na copia do modelo de pizza, adicionamos ao id, o data-key como uma class
 
 esfihaItem.querySelector('.esfiha-item--name').innerHTML = item.name
-//agora dentro do clone de modelo de pizzahtml, selecionamos o nome da pizza, e inserimos no html o item nome lá do pizzajson.
-//faremos o mesmo nos codigos abaixo para todos os detalhes da pizza
 esfihaItem.querySelector('.esfiha-item--desc').innerHTML = item.description
 esfihaItem.querySelector('.esfiha-item--price').innerHTML = `R$ ${item.price.toFixed(2)}`
 esfihaItem.querySelector('.esfiha-item--img img').src = item.img
-
-//agora as pizzas com suas informações aparecem no site.
-
 esfihaItem.querySelector('a').addEventListener('click', (e)=>{
     e.preventDefault()
-    //comando acima seleciona o aref(link) do modelo de pizza html. e cancela o efeito de click que fica atualizando a tela.
 
     let key = e.target.closest('.esfiha-item').getAttribute('data-key')
-//comando acima, target se refere a clicar no próprio elemento, o "e" da fun~ção, e o elemento é o 'a' de href, link.
-//o .closest é um comando que faz procurar o elemento mais próximo, que tenha "pizza-item", no html ele esta localizado acima.
-//entaõ inserimos em 'pizza-item' um getAtrtibute, inserimos o data-key, que se refere ao ID em pizzaJson. 
 
 modalKey = key
-
-modalQt = 1 //para garantir que o modal, após fechado, sempre volta a 1 quando aberto novamente
+modalQt = 1 
 
 c('.esfihaInfo h1').innerHTML = esfihaJson[key].name
-//comando acima, seleciona o título da pizza no modal, e insere no html o título da pizza, puxando do 'servidor' pizzaJson, acessando key (link com atributo de data-key inserido) e substituindo por name. (nome da pizza)
-//isso faz com que sempre puxe as informações da pizza que foi clicada conforme o id no pizzaJson. o mesmo processo se repete abaixo para cada informação no modal.
-
 c('.esfihaBig img').src = esfihaJson[key].img
 c('.esfihaInfo--desc').innerHTML = esfihaJson[key].description
 c('.esfihaInfo--actualPrice').innerHTML = `R$ ${esfihaJson[key].price.toFixed(2)}`
-
-//comando abaixo seve para remover a seleção do botão "tamanho da pizza"
 c('.esfihaInfo--size.selected').classList.remove('selected')
-
-
-
 
 cs('.esfihaInfo--size').forEach((size, sizeIndex)=>{
     
@@ -149,34 +128,19 @@ cs('.esfihaInfo--size').forEach((size, sizeIndex)=>{
         size.classList.add('selected')
     }
 
-    //no html, nas linhas 3 onde temos as pizzaInfo--size, temos a tag span, que recebe o valor do tamanho da pizza. então selecionamos spam aqui, e no html inserimos: puxando de pizzajson pelo key(ID de pizzajson) e dentro do id vamos em sizes (tamanhos da pizza, que são pequena, media grande pra cada pizza),
     size.querySelector('span').innerHTML = esfihaJson[key].sizes[sizeIndex] 
-    //
-    //pizzaJson[key].sizes[sizeIndex] acesso aos tamanhos de pizza
 })
 
-
 c('.esfihaInfo--qt').innerHTML = modalQt
-
-
-    c('.esfihaWindowArea').style.opacity = 0
-//comando acima faz o modal inteiro ficar transparente, invisivel
-    //comando abaixo acessa o css e muda o display do modal de none para flex, assim ele vai aparecer quando clicar
-    
-    c('.esfihaWindowArea').style.display = 'flex'
+c('.esfihaWindowArea').style.opacity = 0
+c('.esfihaWindowArea').style.display = 'flex'
 setTimeout(()=>{
     c('.esfihaWindowArea').style.opacity = 1
 
-}, 200) // função para fazer o modal esperar 200 milisegundos antes de ficar opacidade 1, que significa 100% criando assim uma animação ao abrir o modal
-   
+}, 200)
 })
 
 c('.esfiha-area').append(esfihaItem);
-    //comando acima joga na tela o clone do modelo html, adicionando e não substituindo. 
-    //como o pizzaItem seleciona todos os itens de pizza, então append em pizzaitem joga na tela todos os itens.
-
-
-
 
 })
 
@@ -186,87 +150,49 @@ c('.esfiha-area').append(esfihaItem);
 
 //----------------LISTAGEM DAS BEBIDAS------------------------
 
-
-//comando abaixo mapeia as pizzas listadas no servidor improvisado pizzajson
 bebidaJson.map((item, id)=>{
-    let bebidaItem = c('.models .pizza-item').cloneNode(true)
-//comando acima seleciona o modelo de pizza no html e faz uma copia
-   
+    let bebidaItem = c('.models .bebida-item').cloneNode(true)
+
 bebidaItem.setAttribute('data-key', id)
-//na copia do modelo de pizza, adicionamos ao id, o data-key como uma class
 
-bebidaItem.querySelector('.pizza-item--name').innerHTML = item.name
-//agora dentro do clone de modelo de pizzahtml, selecionamos o nome da pizza, e inserimos no html o item nome lá do pizzajson.
-//faremos o mesmo nos codigos abaixo para todos os detalhes da pizza
-bebidaItem.querySelector('.pizza-item--desc').innerHTML = item.description
-bebidaItem.querySelector('.pizza-item--price').innerHTML = `R$ ${item.price.toFixed(2)}`
-bebidaItem.querySelector('.pizza-item--img img').src = item.img
-
-//agora as pizzas com suas informações aparecem no site.
+bebidaItem.querySelector('.bebida-item--name').innerHTML = item.name
+bebidaItem.querySelector('.bebida-item--desc').innerHTML = item.description
+bebidaItem.querySelector('.bebida-item--price').innerHTML = `R$ ${item.price.toFixed(2)}`
+bebidaItem.querySelector('.bebida-item--img img').src = item.img
 
 bebidaItem.querySelector('a').addEventListener('click', (e)=>{
     e.preventDefault()
-    //comando acima seleciona o aref(link) do modelo de pizza html. e cancela o efeito de click que fica atualizando a tela.
 
-    let key = e.target.closest('.pizza-item').getAttribute('data-key')
-//comando acima, target se refere a clicar no próprio elemento, o "e" da fun~ção, e o elemento é o 'a' de href, link.
-//o .closest é um comando que faz procurar o elemento mais próximo, que tenha "pizza-item", no html ele esta localizado acima.
-//entaõ inserimos em 'pizza-item' um getAtrtibute, inserimos o data-key, que se refere ao ID em pizzaJson. 
+let key = e.target.closest('.bebida-item').getAttribute('data-key')
 
 modalKey = key
+modalQt = 1
 
-modalQt = 1 //para garantir que o modal, após fechado, sempre volta a 1 quando aberto novamente
+c('.bebidaInfo h1').innerHTML = bebidaJson[key].name
+c('.bebidaBig img').src = bebidaJson[key].img
+c('.bebidaInfo--desc').innerHTML = bebidaJson[key].description
+c('.bebidaInfo--actualPrice').innerHTML = `R$ ${bebidaJson[key].price.toFixed(2)}`
+c('.bebidaInfo--size.selected').classList.remove('selected')
 
-c('.pizzaInfo h1').innerHTML = bebidaJson[key].name
-//comando acima, seleciona o título da pizza no modal, e insere no html o título da pizza, puxando do 'servidor' pizzaJson, acessando key (link com atributo de data-key inserido) e substituindo por name. (nome da pizza)
-//isso faz com que sempre puxe as informações da pizza que foi clicada conforme o id no pizzaJson. o mesmo processo se repete abaixo para cada informação no modal.
-
-c('.pizzaBig img').src = bebidaJson[key].img
-c('.pizzaInfo--desc').innerHTML = bebidaJson[key].description
-c('.pizzaInfo--actualPrice').innerHTML = `R$ ${bebidaJson[key].price.toFixed(2)}`
-
-//comando abaixo seve para remover a seleção do botão "tamanho da pizza"
-c('.pizzaInfo--size.selected').classList.remove('selected')
-
-
-
-//selecionamos as 3 classes de pizzainfosize de uma vez. e criamos a função forEach, significa para cada classe de pizzaInfo-size, porque são 3x a mesma classe para 3 tamanhos diferentes. então na função chamamos size (tamanho da pizza) e chamamos sizeIndex (correspondente ao ID da pizza em pizzajson para identificar o tamanho da pizza conforme informaçoes em pizzajson)
-cs('.pizzaInfo--size').forEach((size, sizeIndex)=>{
+cs('.bebidaInfo--size').forEach((size, sizeIndex)=>{
     
-    if (sizeIndex == 2) {
+    if (sizeIndex == 0) {
         size.classList.add('selected')
     }
-
-    //no html, nas linhas 3 onde temos as pizzaInfo--size, temos a tag span, que recebe o valor do tamanho da pizza. então selecionamos spam aqui, e no html inserimos: puxando de pizzajson pelo key(ID de pizzajson) e dentro do id vamos em sizes (tamanhos da pizza, que são pequena, media grande pra cada pizza),
     size.querySelector('span').innerHTML = bebidaJson[key].sizes[sizeIndex] 
-    //
-    //pizzaJson[key].sizes[sizeIndex] acesso aos tamanhos de pizza
 })
 
-
-c('.pizzaInfo--qt').innerHTML = modalQt
-
-
-    c('.pizzaWindowArea').style.opacity = 0
-//comando acima faz o modal inteiro ficar transparente, invisivel
-    //comando abaixo acessa o css e muda o display do modal de none para flex, assim ele vai aparecer quando clicar
-    
-    c('.pizzaWindowArea').style.display = 'flex'
+c('.bebidaInfo--qt').innerHTML = modalQt
+c('.bebidaWindowArea').style.opacity = 0
+c('.bebidaWindowArea').style.display = 'flex'
 setTimeout(()=>{
-    c('.pizzaWindowArea').style.opacity = 1
-
-}, 200) // função para fazer o modal esperar 200 milisegundos antes de ficar opacidade 1, que significa 100% criando assim uma animação ao abrir o modal
-   
+    c('.bebidaWindowArea').style.opacity = 1
+}, 200)
 })
 
 c('.bebidas-area').append(bebidaItem);
-    //comando acima joga na tela o clone do modelo html, adicionando e não substituindo. 
-    //como o pizzaItem seleciona todos os itens de pizza, então append em pizzaitem joga na tela todos os itens.
-
-
-
-
 })
+
 
 
 

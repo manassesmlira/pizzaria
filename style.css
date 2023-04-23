@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 body {
-    background-color:#EEE;
+    background-color:#000000;
     font-family:'Lato',Helvetica,Arial;
     font-size:15px;
     display:flex;
@@ -24,7 +24,7 @@ header {
     top:0;
     right:0;
     height:60px;
-    background-color:#399ade;
+    background-color:#000000;
     display:none;
     justify-content: flex-end;
     align-items: center;
@@ -32,7 +32,7 @@ header {
 .menu-openner {
     margin-right: 15px;
     font-size: 26px;
-    background-color: #a9dcff;
+    background-color: #000000;
     padding: 5px 20px;
     border-radius: 5px;
 }
@@ -47,7 +47,7 @@ header {
 }
 
 aside {
-    background-color:#9ccbe6;
+    background-color:rgb(11, 107, 16);
     width:0vw;
     font-family:'Hepta Slab', Helvetica, Arial;
     transition:all ease .2s;
@@ -123,7 +123,7 @@ h1 {
 .pizza-item--img {
     width:200px;
     height:200px;
-    background-color:#EEE;
+    background-color:rgb(11, 107, 16);
     border-radius:100px;
     box-shadow:0px 10px 50px rgba(0, 0, 0, 0.2);
 }
@@ -131,7 +131,7 @@ h1 {
 .esfiha-item--img {
     width:200px;
     height:200px;
-    background-color:#EEE;
+    background-color:rgba(11, 107, 16, 0);
     border-radius:100px;
     box-shadow:0px 10px 50px rgba(0, 0, 0, 0.2);
 }
@@ -139,7 +139,7 @@ h1 {
 .bebida-item--img {
     width:200px;
     height:200px;
-    background-color:#EEE;
+    background-color:#eeeeee00;
     border-radius:100px;
     box-shadow:0px 10px 50px rgba(0, 0, 0, 0.2);
 }
@@ -166,7 +166,7 @@ h1 {
     border-radius:25px;
     background-color:#388bc5;
     text-align:center;
-    color:#FFF;
+    color:#000000;
     font-size:22px;
     cursor:pointer;
     margin-top:-25px;
@@ -180,7 +180,7 @@ h1 {
     border-radius:25px;
     background-color:#388bc5;
     text-align:center;
-    color:#FFF;
+    color:#000000;
     font-size:22px;
     cursor:pointer;
     margin-top:-25px;
@@ -194,7 +194,7 @@ h1 {
     border-radius:25px;
     background-color:#388bc5;
     text-align:center;
-    color:#FFF;
+    color:#000000;
     font-size:22px;
     cursor:pointer;
     margin-top:-25px;
@@ -215,58 +215,58 @@ h1 {
 
 .pizza-item--price {
     font-size:15px;
-    color:#333;
+    color:#ffffff;
     margin-top:5px;
 }
 
 .esfiha-item--price {
     font-size:15px;
-    color:#333;
+    color:#ffffff;
     margin-top:5px;
 }
 
 .bebida-item--price {
     font-size:15px;
-    color:#333;
+    color:#ffffff;
     margin-top:5px;
 }
 
 .pizza-item--name {
     font-size:20px;
     font-weight: bold;
-    color:#000;
+    color:#f8f8f8;
     margin-top:5px;
 }
 
 .esfiha-item--name {
     font-size:20px;
     font-weight: bold;
-    color:#000;
+    color:#ffffff;
     margin-top:5px;
 }
 
 .bebida-item--name {
     font-size:20px;
     font-weight: bold;
-    color:#000;
+    color:#ffffff;
     margin-top:5px;
 }
 
 .pizza-item--desc {
     font-size:13px;
-    color:#555;
+    color:#ffffff;
     margin-top:10px;
 }
 
 .esfiha-item--desc {
     font-size:13px;
-    color:#555;
+    color:#ffffff;
     margin-top:10px;
 }
 
 .bebida-item--desc {
     font-size:13px;
-    color:#555;
+    color:#fcf7f7;
     margin-top:10px;
 }
 

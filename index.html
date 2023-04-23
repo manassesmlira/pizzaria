@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Pizza Express</title>
+    <title>Super Pizza</title>
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Hepta+Slab:400,700|Lato:400,700&display=swap" rel="stylesheet">
@@ -27,6 +27,15 @@
             <div class="esfiha-item--name">--</div>
             <div class="esfiha-item--desc">--</div>
         </div>
+        <div class="bebida-item">
+            <a href="">
+                <div class="bebida-item--img"><img src="" /></div>
+                <div class="bebida-item--add">+</div>
+            </a>
+            <div class="bebida-item--price">R$ --</div>
+            <div class="bebida-item--name">--</div>
+            <div class="bebida-item--desc">--</div>
+        </div>
         <div class="cart--item">
             <img src="" />
             <div class="cart--item-nome">--</div>
@@ -41,7 +50,7 @@
         <div class="menu-openner"><span>0</span>🛒</div>
     </header>
     <main>
-        <div class="logo"><img src="/images/logo.png" width="200px" /></div>
+        <div class="logo"><img src="/images/logo.png" width="300px" /></div>
         <h1>Pizzas</h1>
         <div class="pizza-area"></div>
         <h1>Esfihas</h1>
@@ -139,6 +148,40 @@
             </div>
         </div>
     </div>
+
+ <!--BEBIDA AREA-->
+
+ <div class="bebidaWindowArea">
+    <div class="bebidaWindowBody">
+        <div class="bebidaInfo--cancelMobileButton">Voltar</div>
+        <div class="bebidaBig">
+            <img src="" />
+        </div>
+        <div class="bebidaInfo">
+            <h1>--</h1>
+            <div class="bebidaInfo--desc">--</div>
+            <div class="bebidaInfo--sizearea">
+                <div class="bebidaInfo--sector">Tamanho</div>
+                <div class="bebidaInfo--sizes">
+                    <div data-key="0" class="bebidaInfo--size">Litros <span>--</span></div>
+            </div>
+            <div class="bebidaInfo--pricearea">
+                <div class="bebidaInfo--sector">Preço</div>
+                <div class="bebidaInfo--price">
+                    <div class="bebidaInfo--actualPrice">R$ --</div>
+                    <div class="bebidaInfo--qtarea">
+                        <button class="bebidaInfo--qtmenos">-</button>
+                        <div class="bebidaInfo--qt">1</div>
+                        <button class="bebidaInfo--qtmais">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bebidaInfo--addButton">Adicionar ao carrinho</div>
+            <div class="bebidaInfo--cancelButton">Cancelar</div>
+        </div>
+    </div>
+</div>
+
 
     <script type="text/javascript" src="pizzas.js"></script>
     <script type="text/javascript" src="bebidas.js"></script>
