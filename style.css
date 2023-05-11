@@ -728,7 +728,7 @@ h1 {
     background-color:#32a345;
 }
 
-.pizzaInfo--cancelButton {
+.cancelButton {
     display:inline-block;
     cursor:pointer;
 }
@@ -1010,7 +1010,7 @@ h1 {
         margin:30px auto;
     }
 
-    .pizzaInfo--cancelButton {
+    .cancelButton {
         display:none;
     }
     .esfihaInfo--cancelButton {
